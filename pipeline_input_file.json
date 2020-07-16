@@ -1,0 +1,34 @@
+{
+  "input_files": {
+    "infile1":"/compbio/data/JimCoffman/jcoffman_006.abOnly_cortisol_2018/jcoffman_006.abOnly_cortisol_2018.design.txt",
+    "infile2":"/compbio/data/JimCoffman/jcoffman_006.abOnly_cortisol_2018/jcoffman_006.abOnly_cortisol_2018.counts.txt",
+    "experiment_name": "jcoffman_006"
+  },
+  
+  "folders":{
+    "parent_folder":"/compbio/analysis/jhg_test/jhg_002/",
+    "script_folder":"/compbio/Rscripts/pca_scripts/"  
+  },
+  
+  "input_variables":{
+    "min_gene_tot_raw_count": 1,
+    "min_count_mean":0,
+    "mean_precentage_threshold":0.4,
+    "sd_precentage_threshold":0.4,
+    "R_squared_threshold":0.95,
+    "max_number_PC_regression":9
+    
+  },
+    
+    "design_variables":{
+        "design1":"treatment",
+	"design2":"rep"
+            
+    },
+    
+     "design_formula":{
+            "design":"~1"
+            
+    }
+    
+}
