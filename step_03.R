@@ -53,10 +53,10 @@ Z_ms = cbind(Z_ms, stdev)
 print("*** Saving the output files to the results folder ***")
 # Save the normalized matrix and the normalized matrix with mean and sd columns added to the end
 output_Z = file.path(parent_folder, "results", paste0(experiment, "_Z_normalized.txt"))
-write.table(Z, file = output_Z, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+write.table(Z, file = output_Z,quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 
 output_Z_ms = file.path(parent_folder, "results", paste0(experiment, "_Z_mean_stdev.txt"))
-write.table(Z_ms, file = output_Z_ms, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+write.table(Z_ms, file = output_Z_ms,quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 
 ## Generate plots for the report
 figure1 = file.path(parent_folder, "figures", paste0(experiment, "_rlog_vsd_mean_sd.png"))

@@ -61,12 +61,12 @@ loadings = pca$rotation
 
 ### Save the loadings for each PC into a file ###
 output_loadings = file.path(parent_folder, "results", paste0(experiment, "_pca_loading_scores.txt"))
-write.table(loadings, file = output_loadings, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+write.table(loadings, file = output_loadings,quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 
 # Save the eigenvalues
 pca_eigenvalue=factoextra::get_eig(pca)
 output_eigenvalues = file.path(parent_folder, "results", paste0(experiment, "_pca_eigenvalues.txt"))
-write.table(pca_eigenvalue, file = output_eigenvalues, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+write.table(pca_eigenvalue, file = output_eigenvalues,quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 
 # Save the pca object
 output_pca = file.path(parent_folder, "results", paste0(experiment, "_pca_object.rds"))

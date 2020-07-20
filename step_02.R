@@ -60,10 +60,10 @@ counts_stdev = apply(counts, 1, sd, na.rm = TRUE)
 
 # Save the matrix of gene means
 output_mean = file.path(parent_folder, "results", paste0(experiment, "_genecounts_means.txt"))
-write.table(counts_mean, file = output_mean, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+write.table(counts_mean, file = output_mean,quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 # Save the matrix of gene standard deviations
 output_sd = file.path(parent_folder, "results", paste0(experiment, "_genecounts_sd.txt"))
-write.table(counts_stdev, file = output_sd, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+write.table(counts_stdev, file = output_sd, sep = '\t',quote=FALSE,col.names=NA,row.names=TRUE)
 
 
 # Construct the DeSeq data set to apply rlog()
@@ -95,13 +95,13 @@ if (ncol(assay(dds)) <=30) {
   rld <- rlog(dds, blind = FALSE)
   rld_assay <- assay(rld)
   output_matrix = file.path(parent_folder, "results", paste0(experiment,"_rld_normalized.txt"))
-  write.table(rld_assay, file = output_matrix, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+  write.table(rld_assay, file = output_matrix, sep = '\t',quote=FALSE,col.names=NA,row.names=TRUE)
   json_copy$path_2_results$normalized_rld = as.character(output_matrix)
 } else {
    vsd <- vst(dds, blind = FALSE)
    vsd_assay <- assay(vsd)
    output_matrix = file.path(parent_folder, "results", paste0(experiment,"_vst_normalized.txt"))
-   write.table(vsd_assay, file = output_matrix, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+   write.table(vsd_assay, file = output_matrix, sep = '\t',quote=FALSE,col.names=NA,row.names=TRUE)
    json_copy$path_2_results$normalized_vst = as.character(output_matrix)
 }
 
