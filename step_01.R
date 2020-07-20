@@ -88,7 +88,7 @@ print("*** Creating a copy of the design file ***")
 file2_design_copy = file.path(parent_folder, "results", paste0(experiment, "_design.txt"))
 write.table(design,
             file = file2_design_copy,
-            quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+            sep = "\t",quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 
 # Save the path to the design file into a new copy of the JSON file (this will be used in the report generation)
 print("*** Creating a copy of the JSON file ***")

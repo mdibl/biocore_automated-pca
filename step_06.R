@@ -88,7 +88,7 @@ for (i in 1:(number_PC-3)){
 
 ### Save the regression table
 output_pc_eigen = file.path(parent_folder, "results", paste0(experiment, "_regression_pc_eigen.txt"))
-write.table(res, file = output_pc_eigen,quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+write.table(res, file = output_pc_eigen, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 json_copy$path_2_results$pc_vs_eigen = as.character(output_pc_eigen)
 
 # Find the significant PCs according to a max R_squared threshold
@@ -122,7 +122,7 @@ for (i in 1:last_meaningful){
 
 # Save the copy of the design file that includes all “meaningful” component values as new columns:
 output_design_meaningful = file.path(parent_folder, "results", paste0(experiment, "_design_meaningful.txt"))
-write.table(design_meaningful_PC, file = output_design_meaningful,quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+write.table(design_meaningful_PC, file = output_design_meaningful, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 
 print("*** Generating plots for the final report ***")
 # Plots for the final report:
@@ -167,7 +167,7 @@ loadings_meaningful = pca$rotation[,1:last_meaningful]
 
 ### Save the loadings for meaningful PC into a file ###
 output_loadings_meaningful = file.path(parent_folder, "results", paste0(experiment, "_meaningful_pc_loading_scores.txt"))
-write.table(loadings_meaningful, file = output_loadings_meaningful,quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
+write.table(loadings_meaningful, file = output_loadings_meaningful, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 
 
 
