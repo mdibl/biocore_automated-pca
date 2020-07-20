@@ -82,7 +82,7 @@ gene_ids = unique(gene_ids)
 stopifnot(rownames(Z) == (rownames(gene_ids)))
 
 outputfile_path = file.path(parent_folder, "results", paste0(experiment , "_Z_threshold.txt"))
-write.table(Z, file = outputfile_path, sep = '\t')
+write.table(Z, file = outputfile_path, sep = '\t',quote=FALSE,sep='\t',col.names=NA,row.names=TRUE)
 
 # Plots for the final report:
 figure4 = file.path(parent_folder, "figures", paste0(experiment, "sd_histogram.png"))
