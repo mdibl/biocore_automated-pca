@@ -80,7 +80,7 @@ for (formula in 1:length(design_formulas)){
     path_2_correlation = file.path(parent_folder,
                                    "results",
                                    paste0(experiment, "_", design_formulas[formula], "_correlation.txt"))
-    write.table(results, file = path_2_correlation, sep = '\t')
+    write.table(results, file = path_2_correlation, sep = '\t',col.names=NA,row.names=TRUE,quote=FALSE)
     
     # save the path to the table into the json copy
     json_copy$path_2_results$correlation_table[formula] = as.character(path_2_correlation)

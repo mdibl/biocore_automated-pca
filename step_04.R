@@ -63,8 +63,8 @@ if (is.na(json$"input_variables"$"sd_precentage_threshold")){
 # Read in the Z table, avg, and sd tables
 print("*** Loading the normalized matrix, sd, and mean matrix from previous step ***")
 Z = as.matrix(read.table(input_Z, sep = '\t', header = TRUE,  row.names = 1,check.names=FALSE))
-raw_means = as.matrix(read.table(path2_count_means, sep = '\t', row.names = 1))
-raw_sd = as.matrix(read.table(path2_count_sd, sep = '\t', row.names = 1))
+raw_means = as.matrix(read.table(path2_count_means, sep = '\t', row.names = 1,header=TRUE))
+raw_sd = as.matrix(read.table(path2_count_sd, sep = '\t', row.names = 1, header=TRUE))
 
 mean_quantile <- quantile(raw_means[,1] ,   probs = mean_thr)
 sd_quantile <-   quantile(raw_sd[,1], probs = sd_thr)
@@ -82,7 +82,7 @@ gene_ids = unique(gene_ids)
 stopifnot(rownames(Z) == (rownames(gene_ids)))
 
 outputfile_path = file.path(parent_folder, "results", paste0(experiment , "_Z_threshold.txt"))
-write.table(Z, file = outputfile_path, sep = '\t')
+write.table(Z, file = outputfile_path, sep = '\t',col.names=NA,row.names=TRUE,quote=FALSE)
 
 # Plots for the final report:
 figure4 = file.path(parent_folder, "figures", paste0(experiment, "sd_histogram.png"))
