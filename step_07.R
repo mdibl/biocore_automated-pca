@@ -90,7 +90,7 @@ for (formula in 1:length(design_formulas)){
   labels=list(unique(variable_pca)[1], unique(variable_pca)[2])
   # a file path to store the figure:
   figurex = file.path(parent_folder, "figures", paste0(experiment, "_cor_plot_", formula, ".png"))
-  png(figurex)
+  png(figurex,height=300,width=300*number_PC)
   par(mfrow = c(1, number_PC))
   for (i in 1:number_PC){
     x <- categorical_variable
@@ -99,8 +99,9 @@ for (formula in 1:length(design_formulas)){
          xlab = "Samples", ylab = "PC value",
          pch = 1, col = categorical_variable, frame = FALSE)
     abline(lm(pca$x[,i] ~ categorical_variable), col = "blue")
-    legend("top", legend = c(unique(variable_pca)[1], unique(variable_pca)[2]),
-           pch = 1, col = 1:2)
+    legend("top", legend = c(unique(variable_pca)),pch=1)
+    #legend("top", legend = c(unique(variable_pca)[1], unique(variable_pca)[2]),
+    #       pch = 1, col = 1:2)
     mtext(paste("correlation results for '", as.character(design_formulas[formula]), "' variable"),
           side = 3, line = -1, outer = TRUE)
   }

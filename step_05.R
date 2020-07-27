@@ -98,6 +98,10 @@ for (columns in 1:ncol(pca$x)){
   pca_data[,columns+1] = pca$x[,columns]
 }
 
+### Save all PC to a file (not just significant/meaningful)
+output_full_pca = file.path(parent_folder, "results", paste0(experiment, "_pca_scores.txt"))
+write.table(pca$x, file = output_full_pca, sep = '\t',col.names=NA,row.names=TRUE,quote=FALSE)
+
 pca_data = as.data.frame(pca_data)
 names(pca_data)[1] = "Sample"
 for (col_names in 2:ncol(pca_data)){
