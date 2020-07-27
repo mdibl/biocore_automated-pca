@@ -305,7 +305,7 @@ if (str_length(json$design_variables$design2) > 0 ){
 ```
 
 
-```{r out.width="50%", out.height="50%"}
+```{r out.width="100%", out.height="100%"}
 all_figures = c()
 for (i in 1:length(json_copy$figures$scree_plot_cor)){
   all_figures[i] = as.character(json_copy$figures$scree_plot_cor[i])
