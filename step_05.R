@@ -21,8 +21,8 @@ library(stringr)
 # JSON input file with SD and AVG thresholds
 print("*** Reading the input files ***")
 json = read_json(path2_json_file)
-parent_folder = json$"folders"$"parent_folder"
-experiment = json$"input_files"$"experiment_name"
+parent_folder = json$folders$output_folder
+experiment = json$experiment_name
 path2_design = file.path(parent_folder, "results", paste0(experiment, "_design.txt"))
 path2_count = file.path(parent_folder, "results", paste0(experiment , "_Z_threshold.txt"))
 

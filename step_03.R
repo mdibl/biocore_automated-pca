@@ -22,8 +22,8 @@ print("*** Reading the input files ***")
 json = read_json(path2_json_file)
 
 # File paths to parent folder, and input file (normalized matrix from step_02.R i.e. rld or vsd matrix)
-parent_folder = json$"folders"$"parent_folder"
-experiment = json$"input_files"$"experiment_name"
+parent_folder = json$folders$output_folder
+experiment = json$experiment_name
 
 if (file.exists(file.path(parent_folder, "results", paste0(experiment,"_rld_normalized.txt")))){
   input_matrix = file.path(parent_folder, "results", paste0(experiment,"_rld_normalized.txt"))

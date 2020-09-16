@@ -1,0 +1,33 @@
+{
+  "experiment_name": "jcoffman_006",  
+  "input_files": {
+      "design_file":"jcoffman_006.abOnly_cortisol_2018.design.txt",
+      "count_file":"jcoffman_006.abOnly_cortisol_2018.counts.txt"
+  },
+  
+  "folders":{
+    "script_folder":"/Users/jhgraber/prog/biocore_automated-pca/",
+    "data_folder": "/Users/jhgraber/google/MDIBL/data/JimCoffman/jcoffman_006/",	
+    "output_folder":"/Users/jhgraber/google/MDIBL/data/JimCoffman/jcoffman_006/pca2/"
+  },
+  
+  "input_variables":{
+    "min_gene_tot_raw_count": 1,
+    "min_count_mean":0,
+    "mean_precentage_threshold":0.4,
+    "sd_precentage_threshold":0.4,
+    "R_squared_threshold":0.95,
+    "max_number_PC_regression":9
+    
+  },
+    
+    "design_variables":{
+        "design1":"treatment",
+	"design2":"rep"            
+    },
+    
+     "design_formula":{
+            "design":"~1"            
+    }
+    
+}

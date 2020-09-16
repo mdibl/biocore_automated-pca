@@ -18,10 +18,10 @@ print("*** Reading the JSON file that contains paths to all input files ***")
 json = read_json(path2_json_file)
 
 # Extract the input file paths from json
-parent_folder = json$"folders"$"parent_folder"
-experiment = json$"input_files"$"experiment_name"
-path2_design = json$"input_files"$"infile1"
-path2_counts = json$"input_files"$"infile2"
+parent_folder = json$folders$output_folder
+experiment = json$experiment_name
+path2_design = paste0(json$folders$data_folder,json$input_files$design_file)
+path2_counts = paste0(json$folders$data_folder,json$input_files$count_file)
 
 print("Path to design and est.counts:")
 print(path2_design)

@@ -2,22 +2,41 @@
 # Calls for each step in the automated PCA pipeline
 
 ### Check that the user gave the right number of arguments (2) in the terminal ###
-if [ "$#" -ne 4 ]; then
-    echo "--- Error. Illegal number of parameters"
-    echo "Please give 4 arguments when calling the bash:"
-    echo "Argument 1 : path to the script directory where the R scripts are stored"
-    echo "Argument 2 : path to the data directory where your data, design, count files are stored"
-    echo "Argument 3 : path to the analysis directory where your results will be stored"
-    echo "Argument 4 : name of the json input file"
+#if [ "$#" -ne 4 ]; then
+#    echo "--- Error. Illegal number of parameters"
+#    echo "Please give 4 arguments when calling the bash:"
+#    echo "Argument 1 : path to the script directory where the R scripts are stored"
+#    echo "Argument 2 : path to the data directory where your data, design, count files are stored"
+#    echo "Argument 3 : path to the analysis directory where your results will be stored"
+#    echo "Argument 4 : name of the json input file"
+#    exit 1
+#fi
+#
+### Assign the command arguments ###
+#SCRIPT_DIR=$1
+#DATA_DIR=$2
+#ANALYSIS_DIR=$3
+#JSON_FILE_NAME=$4
+
+if [ "$#" -lt 1 ];  then
+    echo "--- Error.  No json file provided"
+    exit 1
+fi
+JSON_FILE_NAME=$1
+#check for existence of the json file
+### Check that json file exists (argument 2) ###
+if [ -f ${JSON_FILE_NAME} ] 
+then
+    echo "File ${JSON_FILE_NAME} exists." 
+else
+    echo "Error: File ${JSON_FILE_NAME} does not exists or is not stored in the right location."
     exit 1
 fi
 
-### Assign the command arguments ###
-SCRIPT_DIR=$1
-DATA_DIR=$2
-ANALYSIS_DIR=$3
-JSON_FILE_NAME=$4
-
+# extract the directories from the json file
+SCRIPT_DIR=`grep script_folder ${JSON_FILE_NAME} | cut -f 2 -d ':' | cut -f 2 -d '"'`
+DATA_DIR=`grep data_folder ${JSON_FILE_NAME} | cut -f 2 -d ':' | cut -f 2 -d '"'`
+ANALYSIS_DIR=`grep output_folder ${JSON_FILE_NAME} | cut -f 2 -d ':' | cut -f 2 -d '"'`
 ### Check that all directories exist ###
 
 # Check for the script directory
@@ -43,20 +62,12 @@ if [ -d ${ANALYSIS_DIR} ]
 then
     echo "Directory ${ANALYSIS_DIR} exists." 
 else
-    echo "Error: Directory ${ANALYSIS_DIR} does not exist."
-    exit 1
+    echo "Directory ${ANALYSIS_DIR} does not exist."
+    echo "Creating ${ANALYSIS_DIR}."
+    mkdir -p ${ANALYSIS_DIR}
 fi
 
-### Check that json file exists (argument 2) ###
-if [ -f ${JSON_FILE_NAME} ] 
-then
-    echo "File ${JSON_FILE_NAME} exists." 
-else
-    echo "Error: File ${JSON_FILE_NAME} does not exists or is not stored in the right location."
-    exit 1
-fi
-
-
+#exit 0
 ### Create folders to store the outputs ###
 
 echo "*** Create a report folder if it does not exist ***"
@@ -81,9 +92,9 @@ fi
 
 DATA_FOLDER=${DATA_DIR}
 SCRIPTS_FOLDER=${SCRIPT_DIR}
-REPORT_FOLDER=${ANALYSIS_DIR}pca_report/
-RESULTS_FOLDER=${ANALYSIS_DIR}pca_results/
-FIGURES_FOLDER=${ANALYSIS_DIR}pca_figures/
+REPORT_FOLDER=${ANALYSIS_DIR}report/
+RESULTS_FOLDER=${ANALYSIS_DIR}results/
+FIGURES_FOLDER=${ANALYSIS_DIR}figures/
 
 JSON_PATH=$JSON_FILE_NAME
 

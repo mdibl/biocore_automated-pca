@@ -24,10 +24,10 @@ print("*** Reading the input files ***")
 json = read_json(path2_json_file)
 
 # Extract the input file paths and variables from json
-parent_folder = json$"folders"$"parent_folder"
-experiment = json$"input_files"$"experiment_name"
-path2_design = json$"input_files"$"infile1"
-path2_counts = json$"input_files"$"infile2"
+parent_folder = json$folders$output_folder
+experiment = json$experiment_name
+path2_design = paste0(json$folders$data_folder,json$input_files$design_file)
+path2_counts = paste0(json$folders$data_folder,json$input_files$count_file)
 min_rawcounts_rowsum = json$input_variables$min_gene_tot_raw_count
 min_mean = json$input_variables$min_count_mean
 

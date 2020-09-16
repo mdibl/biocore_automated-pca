@@ -13,9 +13,9 @@ library(rmarkdown)
 
 json = read_json(path2_json_file)
 
-parent_folder = json$folders$parent_folder
+parent_folder = json$folders$output_folder
 script_folder = json$folders$script_folder
-experiment = json$input_files$experiment_name
+experiment = json$experiment_name
 report_file = file.path(script_folder, "final_report.Rmd")
 output_directory = file.path(parent_folder, "report")
 output_name = paste0(experiment, "_results")
