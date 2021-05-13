@@ -7,7 +7,7 @@ path2_json_file = args[1]
 # **********************************************************************
 ## Load in the necessary libraries:
 options(stringsAsFactors = FALSE)
-options(bitmapType='cairo')
+options(bitmapType='ggsave')
 library(jsonlite)
 library(readr)
 library(ggplot2)
