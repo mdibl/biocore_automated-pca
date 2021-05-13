@@ -1,13 +1,13 @@
 {
   "input_files": {
-    "infile1":"/compbio/data/JimCoffman/jcoffman_006.abOnly_cortisol_2018/jcoffman_006.abOnly_cortisol_2018.design.txt",
-    "infile2":"/compbio/data/JimCoffman/jcoffman_006.abOnly_cortisol_2018/jcoffman_006.abOnly_cortisol_2018.counts.txt",
-    "experiment_name": "jcoffman_006"
+    "infile1":"/Users/nathanielmaki/rpca/jcoffman_008_merged.design.txt",
+    "infile2":"/Users/nathanielmaki/rpca/jcoffman_008.klf9_multiTime_2021_merged.gene.counts.txt",
+    "experiment_name": "jcoffman_008_merged"
   },
   
   "folders":{
-    "parent_folder":"/compbio/analysis/jhg_test/jhg_002/",
-    "script_folder":"/compbio/Rscripts/pca_scripts/"  
+    "parent_folder":"/Users/nathanielmaki/Documents/Github/biocore_automated-pca/",
+    "script_folder":"/Users/nathanielmaki/rpca/"  
   },
   
   "input_variables":{

@@ -19,12 +19,12 @@ for (i in 1:length(bioc_packages)){
 
 packages <- c("dplyr", "factoextra", "forestmangr", "ggplot2",
               "jsonlite", "knitr", "readr", "rmarkdown", "stringr",
-              "grid", "gridExtra")
+              "grid", "gridExtra", "svglite")
 print("*** Checking that required CRAN packages are installed ***")
 for (j in 1:length(packages)){
   if (length(setdiff(packages[j], rownames(installed.packages()))) > 0) {
     print(paste("Installing the following package:", packages[j]))
-    install.packages(packages[j])
+    install.packages(packages[j], repos = "http://cran.us.r-project.org")
   } else {print(paste(packages[j], "is installed"))}
 }
 
