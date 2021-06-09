@@ -21,8 +21,11 @@
   },
     
     "design_variables":{
-        "design1":"treatment",
-	"design2":"rep"
+      "design1":"treatment",
+	    "design2":"replicate",
+      "design3":"genotype",
+      "design4":"Z_Time",
+      "design5":"tissue"
             
     },
     
