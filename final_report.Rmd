@@ -29,8 +29,8 @@ library(stringr)
 # Read the json file:
 path2_json_file = file.path(params$json)
 json = read_json(path2_json_file)
-parent_folder = file.path(json$folders$parent_folder)
-experiment = json$input_files$experiment_name
+parent_folder = file.path(json$folders$output_folder)
+experiment = json$experiment_name
 json_copy = read_json(file.path(parent_folder, "results", paste0(experiment, "_json_copy.json")))
 ```
 
@@ -47,8 +47,8 @@ In this report you will find:
 ## Input files
 The input files can be found at the following location on your machine:
 ```{r}
-path_2_design_file = json$input_files$infile1
-path_2_counts_file = json$input_files$infile2
+path_2_design_file = paste0(json$folders$data_folder,json$input_files$design_file)
+path_2_counts_file = paste0(json$folders$data_folder,json$input_files$count_file)
 print(paste("Design file: ", path_2_design_file))
 print(paste("Estimated counts file: ", path_2_counts_file))
 ```

@@ -16,8 +16,8 @@ library(stringr)
 # Read in input files:
 print("*** Reading the input files ***")
 json = read_json(path2_json_file)
-parent_folder = json$"folders"$"parent_folder"
-experiment = json$"input_files"$"experiment_name"
+parent_folder = json$folders$output_folder
+experiment = json$experiment_name
 path2_design = file.path(parent_folder, "results", paste0(experiment, "_design_meaningful.txt"))
 path_2_pca = file.path(parent_folder, "results", paste0(experiment, "_pca_object.rds"))
 path_2_json_copy = file.path(parent_folder, "results", paste0(experiment, "_json_copy.json"))

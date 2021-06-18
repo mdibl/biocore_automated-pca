@@ -22,8 +22,8 @@ print("*** Reading the input files ***")
 json = read_json(path2_json_file)
 
 # Extracting the file paths from the JSON file
-parent_folder = json$"folders"$"parent_folder"
-experiment = json$"input_files"$"experiment_name"
+parent_folder = json$folders$output_folder
+experiment = json$experiment_name
 input_Z = file.path(parent_folder, "results", paste0(experiment, "_Z_normalized.txt"))
 path2_count_means = file.path(parent_folder, "results", paste0(experiment, "_genecounts_means.txt"))
 path2_count_sd = file.path(parent_folder, "results", paste0(experiment, "_genecounts_sd.txt"))
