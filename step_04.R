@@ -11,7 +11,7 @@ path2_json_file = args[1]
 # Load the necessary libraries
 print("Loading libraries")
 options(stringsAsFactors = FALSE)
-options(bitmapType='cairo')
+options(bitmapType='quartz')
 library(jsonlite)
 library(ggplot2)
 

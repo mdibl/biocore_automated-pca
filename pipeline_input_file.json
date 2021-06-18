@@ -1,13 +1,13 @@
 {
   "input_files": {
-    "infile1":"/compbio/data/JimCoffman/jcoffman_006.abOnly_cortisol_2018/jcoffman_006.abOnly_cortisol_2018.design.txt",
-    "infile2":"/compbio/data/JimCoffman/jcoffman_006.abOnly_cortisol_2018/jcoffman_006.abOnly_cortisol_2018.counts.txt",
-    "experiment_name": "jcoffman_006"
+    "infile1":"/Users/nathanielmaki/meta_rpca/data/jcoffman.meta.design.txt",
+    "infile2":"/Users/nathanielmaki/meta_rpca/data/jcoffman.meta.gene.counts.txt",
+    "experiment_name": "jcoffman.meta"
   },
   
   "folders":{
-    "parent_folder":"/compbio/analysis/jhg_test/jhg_002/",
-    "script_folder":"/compbio/Rscripts/pca_scripts/"  
+    "parent_folder":"/Users/nathanielmaki/meta_rpca/",
+    "script_folder":"/Users/nathanielmaki/meta_rpca/scripts/"  
   },
   
   "input_variables":{
@@ -21,8 +21,11 @@
   },
     
     "design_variables":{
-        "design1":"treatment",
-	"design2":"rep"
+      "design1":"treatment",
+	    "design2":"replicate",
+      "design3":"genotype",
+      "design4":"Z_Time",
+      "design5":"tissue"
             
     },
     
