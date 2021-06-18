@@ -1,13 +1,13 @@
 {
   "input_files": {
-    "infile1":"/Users/nathanielmaki/meta_rpca/data/jcoffman.meta.design.txt",
-    "infile2":"/Users/nathanielmaki/meta_rpca/data/jcoffman.meta.gene.counts.txt",
-    "experiment_name": "jcoffman.meta"
+    "infile1":"/Users/nathanielmaki/rpca/jcoffman_008_merged.design.txt",
+    "infile2":"/Users/nathanielmaki/rpca/jcoffman_008.klf9_multiTime_2021_merged.gene.counts.txt",
+    "experiment_name": "jcoffman_008_merged"
   },
   
   "folders":{
-    "parent_folder":"/Users/nathanielmaki/meta_rpca/",
-    "script_folder":"/Users/nathanielmaki/meta_rpca/scripts/"  
+    "parent_folder":"/Users/nathanielmaki/Documents/Github/biocore_automated-pca/",
+    "script_folder":"/Users/nathanielmaki/rpca/"  
   },
   
   "input_variables":{

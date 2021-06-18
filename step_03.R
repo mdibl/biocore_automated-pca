@@ -11,7 +11,7 @@ path2_json_file = args[1]
 
 print("*** Loading libraries ***")
 options(stringsAsFactors = FALSE)
-options(bitmapType='quartz')
+options(bitmapType='ggsave')
 library(genefilter)
 library(jsonlite)
 library(ggplot2)
