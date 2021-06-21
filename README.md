@@ -144,9 +144,8 @@ To run the pipeline, do the following:
 
 The other variables in the JSON file are numeric parameters that can be optionally changed to fit the analysis. Under the *Input files* section there is a description of what each numeric parameter is used for.
   
- 5. In the terminal, cd to the parent_folder/scripts and call the bash script "bash_automated_pca.sh" with two arguments:
-    - the full path to your parent folder
-    - the name of the JSON input file (stored in parent_folder/data)
+ 5. In the terminal, cd to the parent_folder/scripts and call the bash script "bash_automated_pca.sh" with a single argument:
+    - the path and name of the JSON input file (stored in parent_folder/data)
  
  The command should look as follow:
  
