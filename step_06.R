@@ -57,6 +57,11 @@ pca = read_rds(path_2_pca)
 
 options(scipen = 999) #to avoid display in scientific notation
 
+##6/22/21 Edit: removing principal components that explain 
+##less than 1% of the variance so that they do not impact the 
+##regression used to determine meaningful principal components
+pca_eigenvalue=pca_eigenvalue[pca_eigenvalue$variance.percent>1,]
+
 # Visualize percent variation and decide which PCs matter
 pca_eigenvalue$dimension = 1:nrow(pca_eigenvalue)
 pca_variation = round(pca_eigenvalue$variance.percent, 3)
@@ -73,12 +78,16 @@ res = data.frame(model_num  = rep(0, number_PC-3),
 
 # Performing linear regression to find meaningful components
 # Warning: doing up to (N-2)->N or up to JSON parameter for mac PC number (default = 10)
+  ##6/22/21 Edit: using all principal components to fit regression, as the earlier 
+##re-assignment of pca_eigenvalue removes any principal components that would 
+##skew the regression by having a small variance percent 
 print("*** Performing linear regression of log10 eigenvalues vs. PC number ***")
 for (i in 1:(number_PC-3)){
   if (i>max_PC_regression){
     break
   }
-  linear = lm(pca_var_log[i:(number_PC-2)] ~ pca_eigenvalue$dimension[i:(number_PC-2)])
+#Before 6/22/21, linear = lm(pca_var_log[i:(number_PC-2)] ~ pca_eigenvalue$dimension[i:(number_PC-2)])
+  linear = lm(pca_var_log[i:(number_PC)] ~ pca_eigenvalue$dimension[i:(number_PC)])
   res$model_num[i] = i
   res$intercept[i] = coef(linear)[1]
   res$slope[i] = coef(linear)[2]
@@ -105,7 +114,18 @@ for (i in 1:((nrow(res))-1)){
 if (!exists("last_meaningful")){
   print("Error: The program could not identify any meaningful components")
   print("This is due to the adjusted R_squared threshold for the regression between Eigenvalue and PC number")
-  stop()
+  ##6/22/2021 Edit: replacing the stop() command that breaks the script with a reset of the last_meaningful
+  ## variable to automatically keep two principal components as meaningful regardless of the result
+  ## of the regression 
+  print("Resetting to keep the first two principal components as meaningful")
+  last_meaningful = 2
+}
+
+##6/22/2021 Edit: if only 1 principal component is kept as meaningful, increase to two 
+if (last_meaningful<2){
+  print("Regression analysis only recognizes one principal component")
+  print("Resetting to keep the first two principal components as meaningful")
+  last_meaningful = 2
 }
 
 print("*** Adding the meaningful PCs coordinates to a copy of the design file ***")
