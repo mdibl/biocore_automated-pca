@@ -1,6 +1,6 @@
 # Automated_PCA_MDIBL
 This repository contains a pipeline that identifies unexpected variables in an expression data matrix. It performs normalization on the count matrix, PC Analysis, and regression on the PCs vs. experimental design. Once meaningful principal components are identified, their coordinates are captured into a modified design file, to perform further regression and, in case no correlation is found between PC and design equation variables, to be used for downstream analysis as surrogates of unexpected variable(s).
-
+#test
 # Acknowledgements
 This repository is forked from the work of Bianca M. Massacci. The original repo can be found here https://github.com/BiancaMass/Automated_PCA_MDIBL.
 
@@ -144,9 +144,8 @@ To run the pipeline, do the following:
 
 The other variables in the JSON file are numeric parameters that can be optionally changed to fit the analysis. Under the *Input files* section there is a description of what each numeric parameter is used for.
   
- 5. In the terminal, cd to the parent_folder/scripts and call the bash script "bash_automated_pca.sh" with two arguments:
-    - the full path to your parent folder
-    - the name of the JSON input file (stored in parent_folder/data)
+ 5. In the terminal, cd to the parent_folder/scripts and call the bash script "bash_automated_pca.sh" with a single argument:
+    - the path and name of the JSON input file (stored in parent_folder/data)
  
  The command should look as follow:
  
