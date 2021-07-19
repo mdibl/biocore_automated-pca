@@ -195,6 +195,117 @@ if (exists("formula2")){
   print("--- Error: there is a problem with the design formula. Please check the JSON input file ***")
 }
 
+#Same loop, but for facet plot of PC1 (added 7/18/21)
+if (exists("formula2")){
+  PC1_facetplot = file.path(parent_folder, "figures", paste0(experiment, "PC1_facetplot.png"))
+  png(PC1_facetplot)
+  print(ggplot(data = pca_data, aes_string(x = "Sample", y = "PC1", fill=formula2)) +
+    geom_bar(stat="identity", position=position_dodge())+
+    facet_grid(. ~ pca_data[,formula1], scales='free')+
+    labs(y="Sample Loading")+
+    theme_bw() +
+    ggtitle(paste("PC1: ", per.pcavar[1], "% | Experiment: ", experiment,sep = ""))+
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), panel.border = element_blank(), panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()))
+  dev.off()
+  
+}else if (!exists("formula2") & exists("formula1")){
+  PC1_facetplot = file.path(parent_folder, "figures", paste0(experiment, "PC1_facetplot.png"))
+  png(PC1_facetplot)
+  print(ggplot(data = pca_data, aes_string(x = "Sample", y = "PC1", fill=formula1)) +
+    geom_bar(stat="identity", position=position_dodge())+
+    theme_bw() +
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), panel.border = element_blank(), panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())+ 
+    ggtitle(paste("PC1: ", per.pcavar[1], "% | Experiment: ", experiment,sep = "")))
+  dev.off()
+  
+} else if (!exists("formula2") & !exists("formula1")){
+  print("--- Error: Missing design variable. Please check the JSON input file ***")
+} else if (exists("formula2") & !exists("formula1")){
+  print("--- Error: please change the JSON file. If there is only one design variable, save it under design1 ***")
+} else {
+  print("--- Error: there is a problem with the design formula. Please check the JSON input file ***")
+}
+
+#Same loop, but for facet plot of PC2 (added 7/18/21)
+if (exists("formula2")){
+  PC2_facetplot = file.path(parent_folder, "figures", paste0(experiment, "PC2_facetplot.png"))
+  png(PC2_facetplot)
+  print(ggplot(data = pca_data, aes_string(x = "Sample", y = "PC2", fill=formula2)) +
+    geom_bar(stat="identity", position=position_dodge())+
+    facet_grid(. ~ pca_data[,formula1], scales='free')+
+    labs(y="Sample Loading")+
+    theme_bw() +
+    ggtitle(paste("PC2: ", per.pcavar[2], "% | Experiment: ", experiment,sep = ""))+
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), panel.border = element_blank(), panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()))
+  dev.off()
+  
+}else if (!exists("formula2") & exists("formula1")){
+  PC2_facetplot = file.path(parent_folder, "figures", paste0(experiment, "PC2_facetplot.png"))
+  png(PC2_facetplot)
+  print(ggplot(data = pca_data, aes_string(x = "Sample", y = "PC2", fill=formula1)) +
+    geom_bar(stat="identity", position=position_dodge())+
+    theme_bw() +
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), panel.border = element_blank(), panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())+ 
+    ggtitle(paste("PC2: ", per.pcavar[2], "% | Experiment: ", experiment,sep = "")))
+  dev.off()
+  
+} else if (!exists("formula2") & !exists("formula1")){
+  print("--- Error: Missing design variable. Please check the JSON input file ***")
+} else if (exists("formula2") & !exists("formula1")){
+  print("--- Error: please change the JSON file. If there is only one design variable, save it under design1 ***")
+} else {
+  print("--- Error: there is a problem with the design formula. Please check the JSON input file ***")
+}
+
+#Same loop, but for facet plot of PC3 (added 7/18/21)
+if (exists("formula2")){
+  PC3_facetplot = file.path(parent_folder, "figures", paste0(experiment, "PC3_facetplot.png"))
+  png(PC3_facetplot)
+  print(ggplot(data = pca_data, aes_string(x = "Sample", y = "PC3", fill=formula2)) +
+    geom_bar(stat="identity", position=position_dodge())+
+    facet_grid(. ~ pca_data[,formula1], scales='free')+
+    labs(y="Sample Loading")+
+    theme_bw() +
+    ggtitle(paste("PC3: ", per.pcavar[3], "% | Experiment: ", experiment,sep = ""))+
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), panel.border = element_blank(), panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()))
+  dev.off()
+  
+}else if (!exists("formula2") & exists("formula1")){
+  PC3_facetplot = file.path(parent_folder, "figures", paste0(experiment, "PC3_facetplot.png"))
+  png(PC3_facetplot)
+  print(ggplot(data = pca_data, aes_string(x = "Sample", y = "PC3", fill=formula1)) +
+    geom_bar(stat="identity", position=position_dodge())+
+    theme_bw() +
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), panel.border = element_blank(), panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())+ 
+    ggtitle(paste("PC3: ", per.pcavar[3], "% | Experiment: ", experiment,sep = "")))
+  dev.off()
+  
+} else if (!exists("formula2") & !exists("formula1")){
+  print("--- Error: Missing design variable. Please check the JSON input file ***")
+} else if (exists("formula2") & !exists("formula1")){
+  print("--- Error: please change the JSON file. If there is only one design variable, save it under design1 ***")
+} else {
+  print("--- Error: there is a problem with the design formula. Please check the JSON input file ***")
+}
+
 
 # Updating the json copy
 path_2_json_copy = file.path(parent_folder, "results", paste0(experiment, "_json_copy.json"))
@@ -205,5 +316,9 @@ json_copy$path_2_results$pca_object = as.character(output_pca)
 json_copy$figures$scree_plot = as.character(figure6)
 json_copy$figures$PC1_PC2 = as.character(figure7)
 json_copy$figures$PC2_PC3 = as.character(figure8)
+#lines below added 7/18/21
+json_copy$figures$PC1_facetplot = as.character(PC1_facetplot)
+json_copy$figures$PC2_facetplot = as.character(PC2_facetplot)
+json_copy$figures$PC3_facetplot = as.character(PC3_facetplot)
 write_json(json_copy, path_2_json_copy, auto_unbox = TRUE)
 

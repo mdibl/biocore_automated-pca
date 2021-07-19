@@ -222,16 +222,26 @@ step_05.R performs principal component analysis (PCA) on the normalized and filt
 figure6 = json_copy$figures$scree_plot
 figure7 = json_copy$figures$PC1_PC2
 figure8 = json_copy$figures$PC2_PC3
+#facetplots added 7/18/21
+PC1_facetplot= json_copy$figures$PC1_facetplot
+PC2_facetplot= json_copy$figures$PC2_facetplot
+PC3_facetplot= json_copy$figures$PC3_facetplot
 ```
 
 ```{r echo = FALSE, out.width = '50%', fig.cap= "Figure 6. Scree plot of the performed PCA."}
 knitr::include_graphics(figure6)
 ```
 
-Follow a visualization of PC1 vs. PC2 coordinates and PC2 vs. PC3. Note: there might be more than 3 principal components. Here I display the first three. To get the coordinates of all the found PCs, refer to the PC object found at:
+The facet plots demonstrate the sample loadings along the first three principal components with respect to design features to possibly suggest what is driving these top principal components. If two design variables are entered, the samples are separated into facets by the first design variable. Additionally, follow a visualization of PC1 vs. PC2 coordinates and PC2 vs. PC3. Note: there might be more than 3 principal components. Here I display the first three. To get the coordinates of all the found PCs, refer to the PC object found at:
 
 ```{r}
 print(json_copy$path_2_results$pca_object)
+```
+```{r echo = FALSE, out.width = '60%'}
+#added 7/18/21
+knitr::include_graphics(PC1_facetplot)
+knitr::include_graphics(PC2_facetplot)
+knitr::include_graphics(PC3_facetplot)
 ```
 
 ```{r echo = FALSE, out.width = '60%', fig.cap= "Figure 7."}
