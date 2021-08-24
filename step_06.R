@@ -189,11 +189,20 @@ loadings_meaningful = pca$rotation[,1:last_meaningful]
 output_loadings_meaningful = file.path(parent_folder, "results", paste0(experiment, "_meaningful_pc_loading_scores.txt"))
 write.table(loadings_meaningful, file = output_loadings_meaningful, sep = '\t',col.names=NA,row.names=TRUE,quote=FALSE)
 
+### also save a file with the same scores, but transformed to range from -1 to 1
 
+#convert loadings by multiplying by the square root of the corresponding vector to get -1 to 1 distribution
+loadings_meaningful_transformed = pca$rotation[,1:last_meaningful]
+for(i in 1:last_meaningful){
+  loadings_meaningful_transformed[,i]<- loadings_meaningful_transformed[,i]*sqrt(pca_eigenvalue$eigenvalue[i]) 
+} 
+output_loadings_meaningful_transformed = file.path(parent_folder, "results", paste0(experiment, "_meaningful_pc_loading_scores_transformed.txt"))
+write.table(loadings_meaningful_transformed, file = output_loadings_meaningful_transformed, sep = '\t',col.names=NA,row.names=TRUE,quote=FALSE)
 
 # Updating the json copy
 json_copy$path_2_results$design_meaningful = as.character(output_design_meaningful)
 json_copy$path_2_results$meaningful_loading_scores = as.character(output_loadings_meaningful)
+json_copy$path_2_results$meaningful_loading_scores_transformed = as.character(output_loadings_meaningful_transformed)
 json_copy$figures$scree_plot_log10 = as.character(figure9)
 json_copy$figures$regression_plot = as.character(figure10)
 write_json(json_copy, path_2_json_copy, auto_unbox = TRUE)

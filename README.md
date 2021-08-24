@@ -176,7 +176,7 @@ Follows a description of each output file by storing directory. All .txt files a
     5.  ExperimentName\_json_copy.json -> A copy of the input JSON file, with appended file paths to output tables, figures and objects.
     
     6.  ExperimentName\_meaningful\_pc_loading_scores.txt -> Loading scores only of the PC that were found to be meaningful through linear regression (see step 6).
-    
+
     7.  ExperimentName\_pca_eigenvalues.txt -> Eigenvalues for all PC, including raw values, explained variance in percent, and cumulative explained variance in percent. 
     
     8.  ExperimentName\_pca\_loading_scores.txt -> Loading scores of all PCs.
@@ -197,6 +197,7 @@ Follows a description of each output file by storing directory. All .txt files a
     
     16. ExperimentName\_Z_threshold.txt -> The counts table after Z-transformation, and filtered for sufficient variation and expression level (step 4). Thresholds are indicated in JSON -> input_variables -> sd_precentage_threshold and JSON -> input_variables -> mean_precentage_threshold
     
+    17. ExperimentName\_meaningful\_pc_loading_scores_transformed.txt -> Loading scores only of the PC that were found to be meaningful through linear regression (see step 6), transformed by each principal component to a scale of -1 to 1 via multiplication by the corresponding eigenvalue.
 
   - /figures:
     
