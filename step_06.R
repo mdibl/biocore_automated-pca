@@ -58,9 +58,10 @@ pca = read_rds(path_2_pca)
 options(scipen = 999) #to avoid display in scientific notation
 
 ##6/22/21 Edit: removing principal components that explain 
-##less than 1% of the variance so that they do not impact the 
+##less than .001% of the variance so that they do not impact the 
 ##regression used to determine meaningful principal components
-pca_eigenvalue=pca_eigenvalue[pca_eigenvalue$variance.percent>1,]
+## .001% chosen since it is typically between the variance of the last and penultimate variance percent
+pca_eigenvalue=pca_eigenvalue[pca_eigenvalue$variance.percent>.001,]
 
 # Visualize percent variation and decide which PCs matter
 pca_eigenvalue$dimension = 1:nrow(pca_eigenvalue)
